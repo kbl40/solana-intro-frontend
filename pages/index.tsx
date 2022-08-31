@@ -10,8 +10,8 @@ const Home: NextPage = () => {
 
   const addressSubmittedHandler = (address: string) => {
     try {
-      setAddress(address)
       const key = new Web3.PublicKey(address)
+      setAddress(key.toBase58())
       const connection = new Web3.Connection(Web3.clusterApiUrl('devnet'))
       connection.getBalance(key).then(balance => {
         setBalance(balance / Web3.LAMPORTS_PER_SOL)
