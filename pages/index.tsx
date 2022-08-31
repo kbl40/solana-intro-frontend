@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         setBalance(balance / Web3.LAMPORTS_PER_SOL)
       })
       connection.getAccountInfo(key).then(accountInfo => {
-        if (accountInfo?.executable) {
+        if (accountInfo?.executable ?? false) {
           console.log('It is execuiting')
           setNope('Yep')
         } else {
